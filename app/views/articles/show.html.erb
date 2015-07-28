@@ -1,9 +1,18 @@
 <h1><%= @article.title %></h1>
 <p><%= @article.body %></p>
 <br>
-<br>
-<%= link_to "Edit", edit_article_path(@article) %>
-<br>
-<%= link_to "Delete", article_path(@article), method: :delete, data: {confirm: "Are you sure you want to delete this article?"} %>
-<br><br>
+
+<%= link_to "Edit", edit_article_path(@article) %><br>
+
+<%= link_to "Delete", article_path(@article), method: :delete, data: {confirm: "Are you sure you want to delete this article?"} %><br><br>
+
+<h3>Comments (<%= @article.comments.size %>)</h3>
+
+<!-- Displaying Comments -->
+<%= render partial: 'articles/comment', collection: @article.comments %>
+
+<!-- New Comment Form -->
+<%= render partial: 'comments/form' %><br>
+
+<!-- Back to Index -->
 <%= link_to "<< Back to Articles List", articles_path %>
